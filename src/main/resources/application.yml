@@ -1,0 +1,52 @@
+server:
+  servlet:
+    context-path: /myportal/countryservice
+  error:
+    include-message: always
+  tomcat:
+    remoteip:
+      remote-ip-header: x-forwarded-for
+      protocol-header: x-forwarded-proto
+
+logging:
+  level:
+    org.springframework: ${LOGLEVEL_SPRING:INFO}
+    org.boip.util.countryservice: ${LOGLEVEL_APPLICATION:INFO}
+
+management:
+  health:
+    db:
+      enabled: false
+    ldap:
+      enabled: false
+    rabbit:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  server:
+    port: 8090
+
+http:
+  rest:
+    connect-timeout: ${REST_CONNECT_TIMEOUT:3000}
+    read-timeout: ${REST_READ_TIMEOUT:5000}
+
+basicauth:
+  realm:
+    pattern: /proxy/api/prepayment/**
+    username: ${BASIC_AUTH_USERNAME}
+    password: ${BASIC_AUTH_PASSWORD}
