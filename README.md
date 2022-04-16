@@ -24,13 +24,6 @@ The service has a swagger layer to let humans interact with it.
 
 ## Environment Variables
 
-LOGLEVEL_SPRING=INFO;
-LOGLEVEL_APPLICATION=DEBUG;
-DB_USERNAME=sa;
-DB_PASSWORD=sa;
-DB_CONNECT_URL=jdbc:h2:mem:countries;
-DB_CLOSE_DELAY=-1
-
 | Name                 | Default value | Description |
 |----------------------|---------------| ---- |
 | LOGLEVEL_SPRING      | INFO          | The loglevel for the `org.springframework*` packages
