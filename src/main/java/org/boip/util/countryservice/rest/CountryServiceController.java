@@ -36,8 +36,7 @@ public class CountryServiceController extends AbstractController {
     @ApiOperation(value = "add or update a country")
     @PostMapping("save")
     public @ResponseBody Country save(@RequestBody Country country) {
-        countryService.save(country);
-        return countryService.getByCode(country.getCode());
+        return countryService.save(country);
     }
 
 }
