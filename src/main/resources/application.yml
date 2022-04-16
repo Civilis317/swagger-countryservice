@@ -7,9 +7,6 @@ spring:
   jpa:
     show-sql: ${SHOW_SQL}
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-  h2:
-    console:
-      enabled: true
   flyway:
     locations: classpath:db
 
