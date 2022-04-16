@@ -1,4 +1,4 @@
-package org.boip.util.countryservice.persistence.entiy;
+package org.boip.util.countryservice.persistence.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

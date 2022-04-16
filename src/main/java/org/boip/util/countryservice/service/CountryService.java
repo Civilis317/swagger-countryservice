@@ -3,7 +3,7 @@ package org.boip.util.countryservice.service;
 import lombok.extern.slf4j.Slf4j;
 import org.boip.util.countryservice.exception.NotFoundException;
 import org.boip.util.countryservice.model.Country;
-import org.boip.util.countryservice.persistence.entiy.CountryEntity;
+import org.boip.util.countryservice.persistence.entity.CountryEntity;
 import org.boip.util.countryservice.persistence.repository.CountryRepository;
 import org.springframework.stereotype.Service;
 
