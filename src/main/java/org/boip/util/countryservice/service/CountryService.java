@@ -5,6 +5,7 @@ import org.boip.util.countryservice.exception.NotFoundException;
 import org.boip.util.countryservice.model.Country;
 import org.boip.util.countryservice.persistence.entity.CountryEntity;
 import org.boip.util.countryservice.persistence.repository.CountryRepository;
+import org.boip.util.countryservice.transformation.CountryModelEntityMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,46 +17,28 @@ import java.util.List;
 public class CountryService {
 
     private final CountryRepository repository;
+    private final CountryModelEntityMapper mapper;
 
-    public CountryService(CountryRepository repository) {
+    public CountryService(CountryRepository repository, CountryModelEntityMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
     public Country getByCode(String code) {
         CountryEntity entity = repository.findById(code).orElseThrow(() -> new NotFoundException("Country not found for: " + code));
-        return fromEntity(entity);
+        return mapper.entityToModel(entity);
     }
 
     public List<Country> getAll() {
         List<Country> countryList = new ArrayList<>(256);
-        repository.findAll().forEach(ce -> countryList.add(fromEntity(ce)));
+        repository.findAll().forEach(ce -> countryList.add(mapper.entityToModel(ce)));
         countryList.sort(Comparator.comparing(Country::getCode));
         return countryList;
     }
 
     public Country save(Country country) {
-        CountryEntity entity = fromCountry(country);
+        CountryEntity entity = mapper.modelToEntity(country);
         entity.markNew();
-        return fromEntity(repository.save(entity));
-    }
-
-    private Country fromEntity(CountryEntity entity) {
-        Country country = new Country();
-        country.setCode(entity.getAlpha2code());
-        country.setActive(entity.isActive());
-        country.setEnName(entity.getEnglishName());
-        country.setFrName(entity.getFrenchName());
-        country.setNlName(entity.getDutchName());
-        return country;
-    }
-
-    private CountryEntity fromCountry(Country country) {
-        CountryEntity entity = new CountryEntity();
-        entity.setAlpha2code(country.getCode());
-        entity.setActive(country.isActive());
-        entity.setDutchName(country.getNlName());
-        entity.setEnglishName(country.getEnName());
-        entity.setFrenchName(country.getFrName());
-        return entity;
+        return mapper.entityToModel(repository.save(entity));
     }
 }
