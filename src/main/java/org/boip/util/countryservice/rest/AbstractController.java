@@ -2,6 +2,7 @@ package org.boip.util.countryservice.rest;
 
 import lombok.extern.slf4j.Slf4j;
 import org.boip.util.countryservice.exception.ApplicationException;
+import org.boip.util.countryservice.exception.NotFoundException;
 import org.boip.util.countryservice.exception.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,6 +23,12 @@ public abstract class AbstractController {
     protected void handleApplicationException(ApplicationException e, HttpServletResponse response) throws IOException {
         log.error(e.getMessage(), e);
         response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "");
+    }
+
+    @ExceptionHandler
+    protected void handleNotFoundException(NotFoundException e, HttpServletResponse response) throws IOException {
+        log.info("NotFoundException: {}", e.getMessage());
+        response.sendError(HttpStatus.NOT_FOUND.value(), e.getMessage());
     }
 
 }
