@@ -8,8 +8,10 @@ import org.boip.util.countryservice.persistence.repository.CountryRepository;
 import org.boip.util.countryservice.transformation.CountryModelEntityMapper;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -37,6 +39,7 @@ public class CountryService {
     }
 
     public Country save(Country country) {
+        country.setCreated(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()));
         CountryEntity entity = mapper.modelToEntity(country);
         entity.markNew();
         return mapper.entityToModel(repository.save(entity));

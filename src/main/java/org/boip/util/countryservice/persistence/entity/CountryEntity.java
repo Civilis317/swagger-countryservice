@@ -7,6 +7,7 @@ import lombok.ToString;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -31,6 +32,9 @@ public class CountryEntity implements Persistable<String> {
 
     @Column(name="french_name", nullable = false)
     private String frenchName;
+
+    @Column(name="creation_date", nullable = false)
+    private Date creationDate;
 
     // stop Hibernate checking for update or insert
     @Transient

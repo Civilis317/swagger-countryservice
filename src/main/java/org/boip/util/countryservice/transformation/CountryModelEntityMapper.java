@@ -13,6 +13,7 @@ public interface CountryModelEntityMapper {
             @Mapping(target="dutchName", source="model.nlName"),
             @Mapping(target="englishName", source="model.enName"),
             @Mapping(target="frenchName", source="model.frName"),
+            @Mapping(target="creationDate", source = "model.created", dateFormat = "dd-MM-yyyy HH:mm:ss")
     })
     CountryEntity modelToEntity(Country model);
 
@@ -21,6 +22,7 @@ public interface CountryModelEntityMapper {
             @Mapping(target="nlName", source="entity.dutchName"),
             @Mapping(target="enName", source="entity.englishName"),
             @Mapping(target="frName", source="entity.frenchName"),
+            @Mapping(target="created", source = "entity.creationDate", dateFormat = "dd-MM-yyyy HH:mm:ss")
     })
     Country entityToModel(CountryEntity entity);
 }
