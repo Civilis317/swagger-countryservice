@@ -6,6 +6,12 @@ services:
     container_name: countryservice
     environment:
       - "TZ=Europe/Amsterdam"
+      - "LOGLEVEL_SPRING=_LOGLEVEL_SPRING_"
+      - "LOGLEVEL_HIBERNATE=_LOGLEVEL_HIBERNATE_"
+      - "LOGLEVEL_APPLICATION=_LOGLEVEL_APPLICATION_"
+      - "DB_CONNECT_URL=_DB_CONNECT_URL_"
+      - "DB_USERNAME=_DB_USERNAME_"
+      - "DB_PASSWORD=_DB_PASSWORD_"
+      - "SHOW_SQL=_SHOW_SQL_"
     ports:
       - "8080:8080"
-    
