@@ -12,7 +12,7 @@ The service has a swagger layer to let humans interact with it.
 - PostgreSQL
 - H2 db
 - Using colors for loglevels
-- MapStruct
+- MapStruct (with lombok and implicit type conversion)
 
 ## Local endpoints
  - Swagger interface: http://localhost:8080/myportal/countryservice/swagger-ui.html

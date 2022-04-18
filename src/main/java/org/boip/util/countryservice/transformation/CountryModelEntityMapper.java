@@ -5,11 +5,14 @@ import org.boip.util.countryservice.persistence.entity.CountryEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.mapstruct.Named;
+
+import java.util.Locale;
 
 @Mapper
 public interface CountryModelEntityMapper {
     @Mappings({
-            @Mapping(target="alpha2code", source="model.code"),
+            @Mapping(target="alpha2code", source="model.code", qualifiedByName = "uppercase"),
             @Mapping(target="dutchName", source="model.nlName"),
             @Mapping(target="englishName", source="model.enName"),
             @Mapping(target="frenchName", source="model.frName"),
@@ -25,4 +28,9 @@ public interface CountryModelEntityMapper {
             @Mapping(target="created", source = "entity.creationDate", dateFormat = "dd-MM-yyyy HH:mm:ss")
     })
     Country entityToModel(CountryEntity entity);
+
+    @Named("uppercase")
+    default String uppercase(String value) {
+        return value == null ? null : value.toUpperCase(Locale.ROOT);
+    }
 }

@@ -5,9 +5,12 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.boip.util.countryservice.model.Country;
 import org.boip.util.countryservice.service.CountryService;
+import org.boip.util.countryservice.validation.Validatinator;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.boip.util.countryservice.validation.Validatinator.*;
 
 @Slf4j
 @RestController
@@ -36,6 +39,7 @@ public class CountryServiceController extends AbstractController {
     @ApiOperation(value = "add or update a country")
     @PostMapping("save")
     public @ResponseBody Country save(@RequestBody Country country) {
+        validate(country);
         return countryService.save(country);
     }
 
