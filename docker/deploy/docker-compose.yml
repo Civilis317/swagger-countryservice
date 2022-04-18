@@ -1,0 +1,11 @@
+version "3"
+
+services:
+  countryservice:
+    image: _DOCKER_REGISTRY_/countryservice:1.1.0-SNAPSHOT
+    container_name: countryservice
+    environment:
+      - "TZ=Europe/Amsterdam"
+    ports:
+      - "8080:8080"
+    
