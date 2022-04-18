@@ -15,4 +15,4 @@ docker build --build-arg SOURCE_IMAGE=$BASE_IMAGE --no-cache -t $DOCKER_REGISTRY
 docker push $DOCKER_REGISTRY/$IMAGE_NAME:$VERSION
 
 # find new image
-docker images | grep $LOCAL_IMAGE
+docker images | grep $IMAGE_NAME
