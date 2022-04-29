@@ -45,6 +45,6 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
-    // push test3
+    // push test4
 
 }
