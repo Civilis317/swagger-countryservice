@@ -52,3 +52,10 @@ management:
         enabled: true
   server:
     port: 8090
+
+frontend:
+  angular-url: http://localhost:4200
+
+# symmetric encryption
+encrypt:
+  key: ${ENCRYPTION_KEY}

@@ -1,21 +1,8 @@
 spring:
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: ${DB_CONNECT_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-  jpa:
-    show-sql: ${SHOW_SQL}
-    #    generate-ddl: true
-    #    hibernate:
-    #      ddl-auto: none
-    database-platform: org.hibernate.dialect.H2Dialect
-  h2:
-    console:
-      enabled: true
-  flyway:
-    #    user: ${DB_USERNAME}
-    #    password: ${DB_PASSWORD}
-    #    schemas: ${DB_SCHEMA}
-    #    url: ${DB_CONNECT_URL}
-    locations: classpath:db/h2
+  cloud:
+    config:
+      label: develop
+  config:
+    import: optional:configserver:http://localhost:8888/configserver/api
+  application:
+    name: countryservice
