@@ -30,13 +30,7 @@ public class CountryServiceController extends AbstractController {
         return countryService.getAll();
     }
 
-    @ApiOperation(value = "Retrieve a list of countries")
-    @GetMapping("/list")
-    public @ResponseBody List<Country> list(GetCountriesRequest request) {
-        return countryService.getAll();
-    }
-
-
+    // todo: method to return paginated list
 
     @ApiOperation(value = "Retrieve a single country")
     @GetMapping("/get/{code}")
