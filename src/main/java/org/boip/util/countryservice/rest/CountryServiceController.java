@@ -4,6 +4,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.boip.util.countryservice.model.Country;
+import org.boip.util.countryservice.rest.io.PagedCountryListRequest;
+import org.boip.util.countryservice.rest.io.PagedCountryListResponse;
 import org.boip.util.countryservice.service.CountryService;
 import org.boip.util.countryservice.validation.Validatinator;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +32,12 @@ public class CountryServiceController extends AbstractController {
         return countryService.getAll();
     }
 
-    // todo: method to return paginated list
+    @ApiOperation(value = "Retrieve a paged list of countries")
+    @GetMapping("/page")
+    public @ResponseBody PagedCountryListResponse getPagedList(PagedCountryListRequest request) {
+        // todo: validate request
+        return countryService.getPagedCountryList(request);
+    }
 
     @ApiOperation(value = "Retrieve a single country")
     @GetMapping("/get/{code}")

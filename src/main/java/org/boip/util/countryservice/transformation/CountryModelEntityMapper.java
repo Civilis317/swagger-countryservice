@@ -11,6 +11,7 @@ import java.util.Locale;
 
 @Mapper
 public interface CountryModelEntityMapper {
+
     @Mappings({
             @Mapping(target="alpha2code", source="model.code", qualifiedByName = "uppercase"),
             @Mapping(target="dutchName", source="model.nlName"),
