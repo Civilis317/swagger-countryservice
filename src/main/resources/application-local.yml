@@ -1,8 +1,0 @@
-spring:
-  cloud:
-    config:
-      label: develop
-  config:
-    import: optional:configserver:http://localhost:8888/configserver/api
-  application:
-    name: countryservice

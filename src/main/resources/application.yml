@@ -1,4 +1,11 @@
 spring:
+  cloud:
+    config:
+      label: develop
+  config:
+    import: optional:configserver:${CONFIGSERVER_URL}
+  application:
+    name: countryservice
   datasource:
     driver-class-name: org.postgresql.Driver
     url: ${DB_CONNECT_URL}
