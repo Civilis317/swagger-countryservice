@@ -3,7 +3,7 @@
 # init
 DOCKER_REGISTRY=_DOCKER_REGISTRY_
 BASE_IMAGE=$DOCKER_REGISTRY/org.homelab.openjdk-jre:17
-IMAGE_NAME=countryservice
+IMAGE_NAME=org.homelab.artifact.countryservice
 VERSION=1.2.1-SNAPSHOT
 #TAG_NAME=$DOCKER_REGISTRY/$LOCAL_IMAGE
 

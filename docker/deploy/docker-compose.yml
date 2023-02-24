@@ -2,7 +2,7 @@ version: "3"
 
 services:
   countryservice:
-    image: _DOCKER_REGISTRY_/countryservice:1.2.1-SNAPSHOT
+    image: _DOCKER_REGISTRY_/org.homelab.artifact.countryservice:1.2.1-SNAPSHOT
     container_name: countryservice
     extra_hosts:
       - "host.docker.internal:host-gateway"
