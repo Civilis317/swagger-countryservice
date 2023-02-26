@@ -1,2 +1,2 @@
-@Libary('cicd-library')_
+@Library('cicd-library')_
 build('countryservice')
